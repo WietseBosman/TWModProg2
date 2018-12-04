@@ -20,8 +20,20 @@ namespace Mandelbrot
             Application.Run(new Form1());
             
 
-            Console.WriteLine("test1 hallo");
-            Console.ReadLine();
+        }
+
+        static int Mandelbrot(int iter, double x, double y)
+        {
+            double a = 0;
+            double b = 0;
+            for (int i = 0; i < iter; i++)
+            {
+                a = a * a - b * b + x;
+                b = 2 * a * b + y;
+                if (Math.Sqrt(a * a + b * b) >= 2)
+                return i;
+            }    
+            return 0;
         }
     }
 }
