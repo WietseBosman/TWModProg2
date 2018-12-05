@@ -14,14 +14,14 @@ namespace Mandelbrot
         [STAThread]
         static void Main()
         {
-            
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            
+
 
         }
-
+        
         static int Mandelbrot(int iter, double x, double y)
         {
             double a = 0;
@@ -32,8 +32,9 @@ namespace Mandelbrot
                 b = 2 * a * b + y;
                 if (Math.Sqrt(a * a + b * b) >= 2)
                 return i;
+            
             }    
-            return 0;
+            return 1;
         }
     }
 }
