@@ -22,11 +22,13 @@ namespace Mandelbrot
 
         }
 
-        static int Mandelbrot(int iter, double x, double y)
+        
+
+        static int Mandelbrot(int iter, double x, double y) 
         {
             double a = 0;
             double b = 0;
-            for (int i = 0; i < iter; i++)
+            for (int i = 1; i < iter + 1; i++)
             {
                 a = a * a - b * b + x;
                 b = 2 * a * b + y;
