@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Text;
+using System.Data;
+using System.ComponentModel;
 
 namespace Mandelbrot
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
+        
         static void Main()
         {
 
@@ -24,7 +25,8 @@ namespace Mandelbrot
 
         
 
-        static int Mandelbrot(int iter, double x, double y) 
+        
+        public static int Mandelbrot(double x, double y, int iter)
         {
             double a = 0;
             double b = 0;
@@ -36,7 +38,7 @@ namespace Mandelbrot
                 return i;
             
             }    
-            return 1;
+            return 0;
         }
     }
 }
