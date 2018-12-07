@@ -22,24 +22,6 @@ namespace Mandelbrot
 
 
         }
-
         
-
-        
-        public static int Mandelbrot(double x, double y, int iter)
-        {
-            double a = 0;
-            double b = 0;
-            for (int i = 1; i <= iter; i++)
-            {
-                double newA = a * a - b * b + x;
-                b = 2 * a * b + y;
-                a = newA;
-                if (Math.Sqrt(a * a + b * b) > 2)
-                return i;
-            
-            }    
-            return 0;
-        }
     }
 }
