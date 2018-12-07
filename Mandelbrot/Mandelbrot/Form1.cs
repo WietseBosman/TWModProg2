@@ -97,18 +97,18 @@ namespace Mandelbrot
                     listBox1.SelectedIndex = 1;
                     break;
                 case 2:
-                    textBoxMidX.Text = "0";
-                    textBoxMidY.Text = "1";
-                    textBoxScale.Text = "0,001";
+                    textBoxMidX.Text = "-1,24619293212891";
+                    textBoxMidY.Text = "0,093323669433593";
+                    textBoxScale.Text = "1,953125E-05";
                     textBoxIterations.Text = "100";
-                    listBox1.SelectedIndex = 1;
+                    listBox1.SelectedIndex = 2;
                     break;
                 case 3:
-                    textBoxMidX.Text = "0";
-                    textBoxMidY.Text = "1";
-                    textBoxScale.Text = "0,001";
+                    textBoxMidX.Text = "-1,2547265625";
+                    textBoxMidY.Text = "-0,3851171875";
+                    textBoxScale.Text = "7,8125E-05";
                     textBoxIterations.Text = "100";
-                    listBox1.SelectedIndex = 1;
+                    listBox1.SelectedIndex = 3;
                     break;
                 default:
                     break;
