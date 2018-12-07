@@ -130,7 +130,11 @@ namespace Mandelbrot
             this.listBox2.ItemHeight = 16;
             this.listBox2.Items.AddRange(new object[] {
             "0",
-            "1"});
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
             this.listBox2.Location = new System.Drawing.Point(600, 250);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(120, 68);

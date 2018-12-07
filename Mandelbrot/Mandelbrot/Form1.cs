@@ -125,6 +125,21 @@ namespace Mandelbrot
             textBoxScale.Text = defaultZoom;
         }
 
+        public static int Mandelbrot(double x, double y, int iter)
+        {
+            double a = 0;
+            double b = 0;
+            for (int i = 1; i <= iter; i++)
+            {
+                double newA = a * a - b * b + x;
+                b = 2 * a * b + y;
+                a = newA;
+                if (Math.Sqrt(a * a + b * b) > 2)
+                    return i;
+
+            }
+            return 0;
+        }
         private void pictureUpdate()
         {
             Bitmap bm = new Bitmap(this.pictureBox1.Width, this.pictureBox1.Height);
@@ -133,7 +148,7 @@ namespace Mandelbrot
             {
                 for (int y = 0; y < this.pictureBox1.Height; y++)
                 {
-                    int mandel = Program.Mandelbrot(
+                    int mandel = Mandelbrot(
                         (x - this.pictureBox1.Width / 2) * scale + midx,
                         (y - this.pictureBox1.Height / 2) * scale + midy,
                         iterations
