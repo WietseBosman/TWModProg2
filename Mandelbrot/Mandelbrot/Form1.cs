@@ -83,16 +83,16 @@ namespace Mandelbrot
             switch (listBox2.SelectedIndex)
             {
                 case 0:
-                    textBoxMidX.Text = "0";
-                    textBoxMidY.Text = "0";
-                    textBoxScale.Text = "0,01";
+                    textBoxMidX.Text = "-1,50156114578247";
+                    textBoxMidY.Text = "-0,00221261978149415";
+                    textBoxScale.Text = "4,76837158203125E-09";
                     textBoxIterations.Text = "100";
                     listBox1.SelectedIndex = 0;
                     break;
                 case 1:
-                    textBoxMidX.Text = "0";
-                    textBoxMidY.Text = "1";
-                    textBoxScale.Text = "0,001";
+                    textBoxMidX.Text = "0,2361376953125";
+                    textBoxMidY.Text = "0,5633056640625";
+                    textBoxScale.Text = "9,765625E-06";
                     textBoxIterations.Text = "100";
                     listBox1.SelectedIndex = 1;
                     break;
