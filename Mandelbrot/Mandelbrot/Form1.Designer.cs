@@ -61,7 +61,7 @@ namespace Mandelbrot
             this.textBoxScale.Location = new System.Drawing.Point(300, 50);
             this.textBoxScale.Name = "textBoxScale";
             this.textBoxScale.Size = new System.Drawing.Size(200, 22);
-            this.textBoxScale.TabIndex = 1;
+            this.textBoxScale.TabIndex = 2;
             this.textBoxScale.TextChanged += new System.EventHandler(this.textBoxScale_TextChanged);
             // 
             // textBoxIterations
@@ -69,7 +69,7 @@ namespace Mandelbrot
             this.textBoxIterations.Location = new System.Drawing.Point(300, 100);
             this.textBoxIterations.Name = "textBoxIterations";
             this.textBoxIterations.Size = new System.Drawing.Size(200, 22);
-            this.textBoxIterations.TabIndex = 2;
+            this.textBoxIterations.TabIndex = 3;
             this.textBoxIterations.TextChanged += new System.EventHandler(this.textBoxIterations_TextChanged);
             // 
             // textBoxMidY
@@ -77,7 +77,7 @@ namespace Mandelbrot
             this.textBoxMidY.Location = new System.Drawing.Point(50, 100);
             this.textBoxMidY.Name = "textBoxMidY";
             this.textBoxMidY.Size = new System.Drawing.Size(200, 22);
-            this.textBoxMidY.TabIndex = 3;
+            this.textBoxMidY.TabIndex = 1;
             this.textBoxMidY.TextChanged += new System.EventHandler(this.textBoxMidY_TextChanged);
             // 
             // listBoxPalettes
@@ -92,7 +92,7 @@ namespace Mandelbrot
             this.listBoxPalettes.Location = new System.Drawing.Point(600, 150);
             this.listBoxPalettes.Name = "listBoxPalettes";
             this.listBoxPalettes.Size = new System.Drawing.Size(120, 68);
-            this.listBoxPalettes.TabIndex = 4;
+            this.listBoxPalettes.TabIndex = 6;
             this.listBoxPalettes.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // buttonResetZoom
@@ -100,7 +100,7 @@ namespace Mandelbrot
             this.buttonResetZoom.Location = new System.Drawing.Point(550, 50);
             this.buttonResetZoom.Name = "buttonResetZoom";
             this.buttonResetZoom.Size = new System.Drawing.Size(125, 23);
-            this.buttonResetZoom.TabIndex = 5;
+            this.buttonResetZoom.TabIndex = 4;
             this.buttonResetZoom.Text = "Reset zoom";
             this.buttonResetZoom.UseVisualStyleBackColor = true;
             this.buttonResetZoom.Click += new System.EventHandler(this.button1_Click);
@@ -121,7 +121,7 @@ namespace Mandelbrot
             this.checkBoxDisableMaxIterations.Location = new System.Drawing.Point(550, 100);
             this.checkBoxDisableMaxIterations.Name = "checkBoxDisableMaxIterations";
             this.checkBoxDisableMaxIterations.Size = new System.Drawing.Size(213, 21);
-            this.checkBoxDisableMaxIterations.TabIndex = 7;
+            this.checkBoxDisableMaxIterations.TabIndex = 5;
             this.checkBoxDisableMaxIterations.Text = "Disable iterations limit (2000)";
             this.checkBoxDisableMaxIterations.UseVisualStyleBackColor = true;
             // 
@@ -137,7 +137,7 @@ namespace Mandelbrot
             this.listBoxPresets.Location = new System.Drawing.Point(600, 250);
             this.listBoxPresets.Name = "listBoxPresets";
             this.listBoxPresets.Size = new System.Drawing.Size(120, 68);
-            this.listBoxPresets.TabIndex = 8;
+            this.listBoxPresets.TabIndex = 7;
             this.listBoxPresets.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // labelMidx
@@ -216,7 +216,7 @@ namespace Mandelbrot
             this.Controls.Add(this.textBoxScale);
             this.Controls.Add(this.textBoxMidX);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "11";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMandelbrot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
