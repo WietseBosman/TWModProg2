@@ -66,6 +66,7 @@ namespace Mandelbrot
                 }
             }
             pictureBox1.Image = bm;
+            //commitTest1
         }
     }
 }
