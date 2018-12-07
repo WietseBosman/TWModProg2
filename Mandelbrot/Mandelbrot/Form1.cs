@@ -10,31 +10,35 @@ using System.Windows.Forms;
 
 namespace Mandelbrot
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         const int maxIterations = 3000;
         const string defaultZoom = "0,02";
 
-        int iterations, iterationsInput;
+        //iterations is used for the actual number of iterations, and is equal to iterationsInput in case the latter doesn't exceed maxIterations
+        int iterations, iterationsInput; 
         double midx, midy, scale;
+
         Color c = new Color();
 
-        public Form1()
+        int paletBlackWhite = 0;
+        int paletWaves = 1;
+        int paletLightning = 2;
+        int paletColorfull = 3;
+
+        int preset = 0;
+
+        public MainForm()
         {
             InitializeComponent();
-            textBoxMidX.Text = "0";
-            textBoxMidY.Text = "0";
-            textBoxScale.Text = defaultZoom;
-            textBoxIterations.Text = "100";
-            listBox1.SelectedIndex = 0;
-
+            listBox2.SelectedIndex = 0;
         }
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
            Double.TryParse(textBoxMidX.Text, out midx);
-            this.pictureUpdate();
+           this.pictureUpdate();
         }
 
         private void textBoxMidY_TextChanged(object sender, EventArgs e)
