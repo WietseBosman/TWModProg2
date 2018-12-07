@@ -12,8 +12,8 @@ namespace Mandelbrot
 {
     public partial class MainForm : Form
     {
-        const int maxIterations = 3000;
-        const string defaultZoom = "0,02";
+        const int maxIterations = 2000;
+        const string defaultScale = "0,011";
 
         //iterations is used for the actual number of iterations, and is equal to iterationsInput in case the latter doesn't exceed maxIterations
         int iterations, iterationsInput; 
@@ -21,155 +21,158 @@ namespace Mandelbrot
 
         Color c = new Color();
 
-        int paletBlackWhite = 0;
-        int paletWaves = 1;
-        int paletLightning = 2;
-        int paletColorfull = 3;
+        const int paletteBlackWhite = 0;
+        const int paletteWaves = 1;
+        const int paletteLightning = 2;
+        const int paletteColorfull = 3;
+         
+        const int presetMagic = 0;
+        const int presetSpiral = 1;
+        const int presetIcy = 2;
+        const int presetDisco = 3;
 
-        int preset = 0;
-
+        //initializes the form and displays the default mandelbrot figure
         public MainForm()
         {
             InitializeComponent();
-            listBox2.SelectedIndex = 0;
+            this.textBoxMidX.Text = "0";
+            this.textBoxMidY.Text = "0";
+            this.textBoxScale.Text = defaultScale;
+            this.textBoxIterations.Text = "100";
+            this.listBoxPalettes.SelectedIndex = paletteBlackWhite;
         }
 
-
+        //update the displayed figure to the newly used variables
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
            Double.TryParse(textBoxMidX.Text, out midx);
-           this.pictureUpdate();
+           this.PictureUpdate();
         }
-
         private void textBoxMidY_TextChanged(object sender, EventArgs e)
         {
             Double.TryParse(textBoxMidY.Text, out midy);
-            this.pictureUpdate();
+            this.PictureUpdate();
         }
-
         private void textBoxScale_TextChanged(object sender, EventArgs e)
         {
             Double.TryParse(textBoxScale.Text, out scale);
             
-            this.pictureUpdate();
+            this.PictureUpdate();
         }
-
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                textBoxMidX.Text = ((e.X - pictureBox1.Width / 2) * scale + midx).ToString();
-                textBoxMidY.Text = ((e.Y - pictureBox1.Height / 2) * scale + midy).ToString();
+                textBoxMidX.Text = ((e.X - pictureBoxMandelbrot.Width / 2) * scale + midx).ToString();
+                textBoxMidY.Text = ((e.Y - pictureBoxMandelbrot.Height / 2) * scale + midy).ToString();
                 textBoxScale.Text = (scale / 2).ToString();
             }
             
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
-                textBoxMidX.Text = ((e.X - pictureBox1.Width / 2) * scale + midx).ToString();
-                textBoxMidY.Text = ((e.Y - pictureBox1.Height / 2) * scale + midy).ToString();
+                textBoxMidX.Text = ((e.X - pictureBoxMandelbrot.Width / 2) * scale + midx).ToString();
+                textBoxMidY.Text = ((e.Y - pictureBoxMandelbrot.Height / 2) * scale + midy).ToString();
                 textBoxScale.Text = (scale * 2).ToString();
             }
         }
-
         private void textBoxIterations_TextChanged(object sender, EventArgs e)
         {
             Int32.TryParse(textBoxIterations.Text, out iterationsInput);
-            this.pictureUpdate();
+            this.PictureUpdate();
         }
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.pictureUpdate();
+            this.PictureUpdate();
         }
-
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (listBox2.SelectedIndex)
+            switch (listBoxPresets.SelectedIndex)
             {
-                case 0:
+                case presetMagic:
                     textBoxMidX.Text = "-1,50156114578247";
                     textBoxMidY.Text = "-0,00221261978149415";
                     textBoxScale.Text = "4,76837158203125E-09";
                     textBoxIterations.Text = "100";
-                    listBox1.SelectedIndex = 0;
+                    listBoxPalettes.SelectedIndex = paletteBlackWhite;
                     break;
-                case 1:
+                case presetSpiral:
                     textBoxMidX.Text = "0,2361376953125";
                     textBoxMidY.Text = "0,5633056640625";
                     textBoxScale.Text = "9,765625E-06";
                     textBoxIterations.Text = "100";
-                    listBox1.SelectedIndex = 1;
+                    listBoxPalettes.SelectedIndex = paletteWaves;
                     break;
-                case 2:
+                case presetIcy:
                     textBoxMidX.Text = "-1,24619293212891";
                     textBoxMidY.Text = "0,093323669433593";
                     textBoxScale.Text = "1,953125E-05";
                     textBoxIterations.Text = "100";
-                    listBox1.SelectedIndex = 2;
+                    listBoxPalettes.SelectedIndex = paletteLightning;
                     break;
-                case 3:
+                case presetDisco:
                     textBoxMidX.Text = "-1,2547265625";
                     textBoxMidY.Text = "-0,3851171875";
                     textBoxScale.Text = "7,8125E-05";
                     textBoxIterations.Text = "100";
-                    listBox1.SelectedIndex = 3;
+                    listBoxPalettes.SelectedIndex = paletteColorfull;
                     break;
                 default:
                     break;
             }
-
-
-            this.pictureUpdate();
+            this.PictureUpdate();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             textBoxMidX.Text = "0";
             textBoxMidY.Text = "0";
-            textBoxScale.Text = defaultZoom;
+            textBoxScale.Text = defaultScale;
         }
 
+        //calculates and returns the mandelbrot nummer
         public static int Mandelbrot(double x, double y, int iter)
         {
             double a = 0;
             double b = 0;
+            double newA;
             for (int i = 1; i <= iter; i++)
             {
-                double newA = a * a - b * b + x;
+                newA = a * a - b * b + x;
                 b = 2 * a * b + y;
                 a = newA;
                 if (Math.Sqrt(a * a + b * b) > 2)
                     return i;
-
             }
             return 0;
         }
-        private void pictureUpdate()
+
+        //generates bitmap and displays it to pictureBoxMandelbrot
+        private void PictureUpdate()
         {
-            Bitmap bm = new Bitmap(this.pictureBox1.Width, this.pictureBox1.Height);
-            iterations = checkBox1.Checked ? iterationsInput : Math.Min(iterationsInput, maxIterations);
-            for (int x = 0; x < this.pictureBox1.Width; x++)
+            Bitmap bm = new Bitmap(this.pictureBoxMandelbrot.Width, this.pictureBoxMandelbrot.Height);
+            iterations = checkBoxDisableMaxIterations.Checked ? iterationsInput : Math.Min(iterationsInput, maxIterations); //limits the numbers
+            for (int x = 0; x < this.pictureBoxMandelbrot.Width; x++)
             {
-                for (int y = 0; y < this.pictureBox1.Height; y++)
+                for (int y = 0; y < this.pictureBoxMandelbrot.Height; y++)
                 {
                     int mandel = Mandelbrot(
-                        (x - this.pictureBox1.Width / 2) * scale + midx,
-                        (y - this.pictureBox1.Height / 2) * scale + midy,
+                        (x - this.pictureBoxMandelbrot.Width / 2) * scale + midx,
+                        (y - this.pictureBoxMandelbrot.Height / 2) * scale + midy,
                         iterations
                         );
-                    this.colorUpdate(x, y, mandel, bm);
+                    this.ColorUpdate(x, y, mandel, bm);
                     
                 }
             }
-            pictureBox1.Image = bm;
+            pictureBoxMandelbrot.Image = bm;
             
         }
 
-        private void colorUpdate (int x, int y, int mandel, Bitmap bm)
+        //assigns a color value to a pair of coordinates based on the selected pallete
+        private void ColorUpdate (int x, int y, int mandel, Bitmap bm)
         {
-            switch (listBox1.SelectedIndex)
+            switch (listBoxPalettes.SelectedIndex)
             {
-                case 0: //zwart wit
+                case paletteBlackWhite:
                     if (mandel == 0)
                         bm.SetPixel(x, y, Color.Black);
                     else
@@ -186,7 +189,7 @@ namespace Mandelbrot
                     }
                     break;
 
-                case 1: //kleurtjes
+                case paletteWaves:
                     if (mandel == 0)
                         c = Color.FromArgb(40, 180, 190);
                     else if (mandel == 1)
@@ -194,15 +197,14 @@ namespace Mandelbrot
                     else
                         c = Color.FromArgb(
                         40
-                        , 12 * (int)Math.Floor((double)(mandel / 12))
+                        , 12 * (int)Math.Floor((double)(mandel / iterations * 100 / 12))
                         , 15 * Math.Abs(16 - (mandel % 32))
                         );
                     bm.SetPixel(x, y, c);
 
-
                     break;
 
-                case 2:
+                case paletteLightning:
                     if (mandel == 0)
                         c = Color.FromArgb(40, 255, 255);
                     else
@@ -214,7 +216,7 @@ namespace Mandelbrot
                     bm.SetPixel(x, y, c);
                     break;
 
-                case 3:
+                case paletteColorfull:
                     if (mandel == 0)
                         bm.SetPixel(x, y, Color.White);
                     else
@@ -252,7 +254,6 @@ namespace Mandelbrot
                 default:
                     break;
             }
-
-        }
+       }
     }
 }

@@ -34,17 +34,18 @@ namespace Mandelbrot
             this.textBoxScale = new System.Windows.Forms.TextBox();
             this.textBoxIterations = new System.Windows.Forms.TextBox();
             this.textBoxMidY = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.listBoxPalettes = new System.Windows.Forms.ListBox();
+            this.buttonResetZoom = new System.Windows.Forms.Button();
+            this.pictureBoxMandelbrot = new System.Windows.Forms.PictureBox();
+            this.checkBoxDisableMaxIterations = new System.Windows.Forms.CheckBox();
+            this.listBoxPresets = new System.Windows.Forms.ListBox();
+            this.labelMidx = new System.Windows.Forms.Label();
+            this.labelMidy = new System.Windows.Forms.Label();
+            this.labelScale = new System.Windows.Forms.Label();
+            this.labelIterations = new System.Windows.Forms.Label();
+            this.labelPresets = new System.Windows.Forms.Label();
+            this.labelPalettes = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMandelbrot)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxMidX
@@ -79,136 +80,144 @@ namespace Mandelbrot
             this.textBoxMidY.TabIndex = 3;
             this.textBoxMidY.TextChanged += new System.EventHandler(this.textBoxMidY_TextChanged);
             // 
-            // listBox1
+            // listBoxPalettes
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Items.AddRange(new object[] {
+            this.listBoxPalettes.FormattingEnabled = true;
+            this.listBoxPalettes.ItemHeight = 16;
+            this.listBoxPalettes.Items.AddRange(new object[] {
             "Black and white",
             "Waves",
             "Lightning",
             "Colourful"});
-            this.listBox1.Location = new System.Drawing.Point(600, 150);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 68);
-            this.listBox1.TabIndex = 4;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBoxPalettes.Location = new System.Drawing.Point(600, 150);
+            this.listBoxPalettes.Name = "listBoxPalettes";
+            this.listBoxPalettes.Size = new System.Drawing.Size(120, 68);
+            this.listBoxPalettes.TabIndex = 4;
+            this.listBoxPalettes.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // button1
+            // buttonResetZoom
             // 
-            this.button1.Location = new System.Drawing.Point(550, 50);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Reset";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonResetZoom.Location = new System.Drawing.Point(550, 50);
+            this.buttonResetZoom.Name = "buttonResetZoom";
+            this.buttonResetZoom.Size = new System.Drawing.Size(125, 23);
+            this.buttonResetZoom.TabIndex = 5;
+            this.buttonResetZoom.Text = "Reset zoom";
+            this.buttonResetZoom.UseVisualStyleBackColor = true;
+            this.buttonResetZoom.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBox1
+            // pictureBoxMandelbrot
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pictureBox1.Location = new System.Drawing.Point(50, 150);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(500, 500);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            this.pictureBoxMandelbrot.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBoxMandelbrot.Location = new System.Drawing.Point(50, 150);
+            this.pictureBoxMandelbrot.Name = "pictureBoxMandelbrot";
+            this.pictureBoxMandelbrot.Size = new System.Drawing.Size(500, 500);
+            this.pictureBoxMandelbrot.TabIndex = 6;
+            this.pictureBoxMandelbrot.TabStop = false;
+            this.pictureBoxMandelbrot.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             // 
-            // checkBox1
+            // checkBoxDisableMaxIterations
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(550, 100);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(167, 21);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Disable iterations limit";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxDisableMaxIterations.AutoSize = true;
+            this.checkBoxDisableMaxIterations.Location = new System.Drawing.Point(550, 100);
+            this.checkBoxDisableMaxIterations.Name = "checkBoxDisableMaxIterations";
+            this.checkBoxDisableMaxIterations.Size = new System.Drawing.Size(213, 21);
+            this.checkBoxDisableMaxIterations.TabIndex = 7;
+            this.checkBoxDisableMaxIterations.Text = "Disable iterations limit (2000)";
+            this.checkBoxDisableMaxIterations.UseVisualStyleBackColor = true;
             // 
-            // listBox2
+            // listBoxPresets
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.listBox2.Location = new System.Drawing.Point(600, 250);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 68);
-            this.listBox2.TabIndex = 8;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            this.listBoxPresets.FormattingEnabled = true;
+            this.listBoxPresets.ItemHeight = 16;
+            this.listBoxPresets.Items.AddRange(new object[] {
+            "Magic",
+            "Spiral",
+            "Icy",
+            "Disco"});
+            this.listBoxPresets.Location = new System.Drawing.Point(600, 250);
+            this.listBoxPresets.Name = "listBoxPresets";
+            this.listBoxPresets.Size = new System.Drawing.Size(120, 68);
+            this.listBoxPresets.TabIndex = 8;
+            this.listBoxPresets.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
-            // label1
+            // labelMidx
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 17);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Mid x";
+            this.labelMidx.AutoSize = true;
+            this.labelMidx.Location = new System.Drawing.Point(50, 30);
+            this.labelMidx.Name = "labelMidx";
+            this.labelMidx.Size = new System.Drawing.Size(40, 17);
+            this.labelMidx.TabIndex = 9;
+            this.labelMidx.Text = "Mid x";
             // 
-            // label2
+            // labelMidy
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Mid y";
+            this.labelMidy.AutoSize = true;
+            this.labelMidy.Location = new System.Drawing.Point(50, 80);
+            this.labelMidy.Name = "labelMidy";
+            this.labelMidy.Size = new System.Drawing.Size(41, 17);
+            this.labelMidy.TabIndex = 10;
+            this.labelMidy.Text = "Mid y";
             // 
-            // label3
+            // labelScale
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(300, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 17);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Scale";
+            this.labelScale.AutoSize = true;
+            this.labelScale.Location = new System.Drawing.Point(300, 30);
+            this.labelScale.Name = "labelScale";
+            this.labelScale.Size = new System.Drawing.Size(43, 17);
+            this.labelScale.TabIndex = 11;
+            this.labelScale.Text = "Scale";
             // 
-            // label4
+            // labelIterations
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(300, 80);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 17);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Max iterations";
+            this.labelIterations.AutoSize = true;
+            this.labelIterations.Location = new System.Drawing.Point(300, 80);
+            this.labelIterations.Name = "labelIterations";
+            this.labelIterations.Size = new System.Drawing.Size(95, 17);
+            this.labelIterations.TabIndex = 12;
+            this.labelIterations.Text = "Max iterations";
             // 
-            // label5
+            // labelPresets
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(600, 230);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 17);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Presets";
+            this.labelPresets.AutoSize = true;
+            this.labelPresets.Location = new System.Drawing.Point(600, 230);
+            this.labelPresets.Name = "labelPresets";
+            this.labelPresets.Size = new System.Drawing.Size(56, 17);
+            this.labelPresets.TabIndex = 13;
+            this.labelPresets.Text = "Presets";
             // 
-            // Form1
+            // labelPalettes
+            // 
+            this.labelPalettes.AutoSize = true;
+            this.labelPalettes.Location = new System.Drawing.Point(600, 130);
+            this.labelPalettes.Name = "labelPalettes";
+            this.labelPalettes.Size = new System.Drawing.Size(59, 17);
+            this.labelPalettes.TabIndex = 14;
+            this.labelPalettes.Text = "Palettes";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1262, 977);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(832, 703);
+            this.Controls.Add(this.labelPalettes);
+            this.Controls.Add(this.labelPresets);
+            this.Controls.Add(this.labelIterations);
+            this.Controls.Add(this.labelScale);
+            this.Controls.Add(this.labelMidy);
+            this.Controls.Add(this.labelMidx);
+            this.Controls.Add(this.listBoxPresets);
+            this.Controls.Add(this.checkBoxDisableMaxIterations);
+            this.Controls.Add(this.pictureBoxMandelbrot);
+            this.Controls.Add(this.buttonResetZoom);
+            this.Controls.Add(this.listBoxPalettes);
             this.Controls.Add(this.textBoxMidY);
             this.Controls.Add(this.textBoxIterations);
             this.Controls.Add(this.textBoxScale);
             this.Controls.Add(this.textBoxMidX);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMandelbrot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,16 +229,17 @@ namespace Mandelbrot
         private System.Windows.Forms.TextBox textBoxScale;
         private System.Windows.Forms.TextBox textBoxIterations;
         private System.Windows.Forms.TextBox textBoxMidY;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listBoxPalettes;
+        private System.Windows.Forms.Button buttonResetZoom;
+        private System.Windows.Forms.PictureBox pictureBoxMandelbrot;
+        private System.Windows.Forms.CheckBox checkBoxDisableMaxIterations;
+        private System.Windows.Forms.ListBox listBoxPresets;
+        private System.Windows.Forms.Label labelMidx;
+        private System.Windows.Forms.Label labelMidy;
+        private System.Windows.Forms.Label labelScale;
+        private System.Windows.Forms.Label labelIterations;
+        private System.Windows.Forms.Label labelPresets;
+        private System.Windows.Forms.Label labelPalettes;
     }
 }
 
