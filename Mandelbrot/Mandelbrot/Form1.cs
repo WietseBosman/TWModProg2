@@ -15,8 +15,9 @@ namespace Mandelbrot
         const int maxIterations = 3000;
         const string defaultZoom = "0,02";
 
-        int iterationsInput;
+        int iterations, iterationsInput;
         double midx, midy, scale;
+        Color c = new Color();
 
         public Form1()
         {
@@ -77,6 +78,46 @@ namespace Mandelbrot
             this.pictureUpdate();
         }
 
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (listBox2.SelectedIndex)
+            {
+                case 0:
+                    textBoxMidX.Text = "0";
+                    textBoxMidY.Text = "0";
+                    textBoxScale.Text = "0,01";
+                    textBoxIterations.Text = "100";
+                    listBox1.SelectedIndex = 0;
+                    break;
+                case 1:
+                    textBoxMidX.Text = "0";
+                    textBoxMidY.Text = "1";
+                    textBoxScale.Text = "0,001";
+                    textBoxIterations.Text = "100";
+                    listBox1.SelectedIndex = 1;
+                    break;
+                case 2:
+                    textBoxMidX.Text = "0";
+                    textBoxMidY.Text = "1";
+                    textBoxScale.Text = "0,001";
+                    textBoxIterations.Text = "100";
+                    listBox1.SelectedIndex = 1;
+                    break;
+                case 3:
+                    textBoxMidX.Text = "0";
+                    textBoxMidY.Text = "1";
+                    textBoxScale.Text = "0,001";
+                    textBoxIterations.Text = "100";
+                    listBox1.SelectedIndex = 1;
+                    break;
+                default:
+                    break;
+            }
+
+
+            this.pictureUpdate();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             textBoxMidX.Text = "0";
@@ -87,7 +128,7 @@ namespace Mandelbrot
         private void pictureUpdate()
         {
             Bitmap bm = new Bitmap(this.pictureBox1.Width, this.pictureBox1.Height);
-            int iterations = checkBox1.Checked ? iterationsInput : Math.Min(iterationsInput, maxIterations);
+            iterations = checkBox1.Checked ? iterationsInput : Math.Min(iterationsInput, maxIterations);
             for (int x = 0; x < this.pictureBox1.Width; x++)
             {
                 for (int y = 0; y < this.pictureBox1.Height; y++)
@@ -110,13 +151,16 @@ namespace Mandelbrot
             switch (listBox1.SelectedIndex)
             {
                 case 0: //zwart wit
+                    if (mandel == 0)
+                        bm.SetPixel(x, y, Color.Black);
+                    else
                     switch (mandel % 2)
                     {
                         case 0:
-                            bm.SetPixel(x, y, Color.Black);
+                            bm.SetPixel(x, y, Color.White);
                             break;
                         case 1:
-                            bm.SetPixel(x, y, Color.White);
+                            bm.SetPixel(x, y, Color.Black);
                             break;
                         default:
                             break;
@@ -124,12 +168,66 @@ namespace Mandelbrot
                     break;
 
                 case 1: //kleurtjes
-                    Color c = new Color();
-                    c = Color.FromArgb(
-                        (mandel % 10) * 25,
-                        (mandel % 2) * 255,
-                        (mandel % 4) * 63);
+                    if (mandel == 0)
+                        c = Color.FromArgb(40, 180, 190);
+                    else if (mandel == 1)
+                        c = Color.FromArgb(40, 180, 190);
+                    else
+                        c = Color.FromArgb(
+                        40
+                        , 12 * (int)Math.Floor((double)(mandel / 12))
+                        , 15 * Math.Abs(16 - (mandel % 32))
+                        );
                     bm.SetPixel(x, y, c);
+
+
+                    break;
+
+                case 2:
+                    if (mandel == 0)
+                        c = Color.FromArgb(40, 255, 255);
+                    else
+                        c = Color.FromArgb(
+                        0
+                        , 255 * mandel / iterations
+                        , 255 * mandel / iterations
+                        );
+                    bm.SetPixel(x, y, c);
+                    break;
+
+                case 3:
+                    if (mandel == 0)
+                        bm.SetPixel(x, y, Color.White);
+                    else
+                        switch (mandel % 8)
+                        {
+                            case 0:
+                                bm.SetPixel(x, y, Color.Red);
+                                break;
+                            case 1:
+                                bm.SetPixel(x, y, Color.Black);
+                                break;
+                            case 2:
+                                bm.SetPixel(x, y, Color.Green);
+                                break;
+                            case 3:
+                                bm.SetPixel(x, y, Color.Blue);
+                                break;
+                            case 4:
+                                bm.SetPixel(x, y, Color.Yellow);
+                                break;
+                            case 5:
+                                bm.SetPixel(x, y, Color.Cyan);
+                                break;
+                            case 6:
+                                bm.SetPixel(x, y, Color.Orange);
+                                break;
+                            case 7:
+                                bm.SetPixel(x, y, Color.Purple);
+                                break;
+                            default:
+                                break;
+                        }
                     break;
 
                 default:
